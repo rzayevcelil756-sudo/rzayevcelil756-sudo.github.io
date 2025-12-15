@@ -3,7 +3,7 @@ layout: home
 title: Home
 ---
 
-# Hi, I’m Celil Rzayev 👋
+# Hi, I’m Jalil Rzayev 
 
 I’m a computer science student learning web development and building projects using **GitHub Pages** and **Jekyll**.
 
