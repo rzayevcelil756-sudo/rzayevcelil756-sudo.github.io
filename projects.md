@@ -9,6 +9,6 @@ permalink: /projects/
 ### Project 1 – Demo Video
 
 <iframe width="560" height="315"
-src="https://www.youtube.com/watch?v=kLRSOuP4DFk"
+src="https://www.youtube.com/embed/kLRSOuP4DFk"
 title="YouTube video player" frameborder="0"
 allowfullscreen></iframe>
