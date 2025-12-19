@@ -31,7 +31,12 @@ a{ color:var(--text); text-decoration:none; }
   align-items:center;
   padding:14px 0;
 }
-.brand a{ font-weight:700; }
+.brand a{
+  font-weight:700;
+  color:#4da3ff;
+  text-decoration:none;
+  text-shadow:0 0 12px rgba(77,163,255,.35);
+}
 .links a{ margin-left:16px; color:var(--muted); }
 .links a:hover{ color:var(--text); }
 
