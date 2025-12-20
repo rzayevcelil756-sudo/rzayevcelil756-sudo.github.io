@@ -4,42 +4,96 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
 
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+    <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
   </head>
 
-  <body>
+  <body class="page">
+    <a class="skip-link" href="#content">Skip to content</a>
+
     <header class="nav">
       <div class="container nav-inner">
-        <div class="brand">
-          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        </div>
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-text">{{ site.title }}</span>
+        </a>
 
-        <nav class="links">
+        <nav class="links" aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+          <a href="{{ '/about/' | relative_url }}" class="{% if page.url contains '/about' %}active{% endif %}">About</a>
+          <a href="{{ '/projects/' | relative_url }}" class="{% if page.url contains '/projects' %}active{% endif %}">Projects</a>
+        </nav>
+
+        <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" hidden>
+        <div class="container mobile-links">
           <a href="{{ '/' | relative_url }}">Home</a>
           <a href="{{ '/about/' | relative_url }}">About</a>
           <a href="{{ '/projects/' | relative_url }}">Projects</a>
-        </nav>
+        </div>
       </div>
     </header>
 
-    <main class="container">
+    <main id="content" class="container main">
       {{ content }}
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
-        <div>
+        <div class="footer-left">
           <div class="footer-title">{{ site.title }}</div>
           <div class="muted">{{ site.description }}</div>
+
+          <div class="footer-badges">
+            <a class="chip" href="{{ site.repo_url }}" target="_blank" rel="noopener">
+              Website Repository →
+            </a>
+          </div>
         </div>
 
-        <div>
+        <div class="footer-right">
           <div class="footer-title">Quick Links</div>
-          <a href="{{ '/' | relative_url }}">Home</a><br/>
-          <a href="{{ '/about/' | relative_url }}">About</a><br/>
-          <a href="{{ '/projects/' | relative_url }}">Projects</a>
+          <div class="footer-links">
+            <a href="{{ '/' | relative_url }}">Home</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/projects/' | relative_url }}">Projects</a>
+          </div>
+
+          <div class="social" aria-label="Social links">
+            <!-- GitHub -->
+            <a class="icon-btn" href="{{ site.social.github }}" target="_blank" rel="noopener" aria-label="GitHub profile">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12 .5C5.73.5.75 5.62.75 12c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.26.79-.57
+                  0-.28-.01-1.02-.02-2-3.2.71-3.88-1.58-3.88-1.58-.53-1.38-1.3-1.74-1.3-1.74-1.06-.75.08-.74.08-.74
+                  1.17.08 1.79 1.24 1.79 1.24 1.04 1.83 2.73 1.3 3.4 1 .11-.77.41-1.3.74-1.6-2.55-.3-5.24-1.31-5.24-5.85
+                  0-1.29.45-2.35 1.19-3.17-.12-.3-.52-1.51.11-3.15 0 0 .97-.32 3.18 1.21.92-.26 1.9-.39 2.88-.39
+                  .98 0 1.96.13 2.88.39 2.2-1.53 3.17-1.21 3.17-1.21.63 1.64.23 2.85.11 3.15.74.82 1.19 1.88 1.19 3.17
+                  0 4.55-2.7 5.55-5.27 5.84.42.37.79 1.1.79 2.22 0 1.6-.02 2.89-.02 3.28 0 .31.21.69.8.57
+                  4.57-1.53 7.85-5.85 7.85-10.95C23.25 5.62 18.27.5 12 .5z" />
+              </svg>
+            </a>
+
+            <!-- Codecademy -->
+            <a class="icon-btn" href="{{ site.social.codecademy }}" target="_blank" rel="noopener" aria-label="Codecademy profile">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.43 0 4.66-.87 6.39-2.31l-2.2-2.2A6.96 6.96 0 0 1 12 19
+                  c-3.86 0-7-3.14-7-7s3.14-7 7-7c1.68 0 3.22.6 4.41 1.59l2.2-2.2A9.96 9.96 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
         </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span class="muted">© {{ "now" | date: "%Y" }} {{ site.title }}. Built with Jekyll.</span>
       </div>
     </footer>
   </body>
